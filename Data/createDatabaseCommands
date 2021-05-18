@@ -1,0 +1,20 @@
+docker exec -it mysql-dad_jokes mysql -u root -p
+
+Root Password: aiPhi4thoojuaK4aiv7ohs1Sheej9Al0
+
+docker run -d --name mysql-dad_jokes -p 3306:3306 -v dad_jokes:/var/lib/mysql -e "MYSQL_RANDOM_ROOT_PASSWORD=yes" -e "MYSQL_PASSWORD=dad" -e "MYSQL_DATABASE=dad_jokes" -e "MYSQL_USER=dad" --network dad_jokes mysql
+
+set MYSQL_DB=dad_jokes
+set MYSQL_USER=dad
+set MYSQL_PASSWORD=dad
+
+CREATE DATABASE [IF NOT EXISTS] dadJokes;
+
+use dadJokes;
+
+CREATE TABLE jokes(
+  id int NOT NULL AUTO_INCREMENT,
+  setup varchar(511) NOT NULL,
+  punchline varchar(511) NOT NULL,
+  PRIMARY KEY (id)
+);
